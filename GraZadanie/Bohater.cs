@@ -9,19 +9,20 @@ namespace GraZadanie
     internal class Bohater
     {
         private string Imie;
-        private int Zycie;
+        private int Zycie = 100;
         private int Mana;
 
-        public void setZycie(Bohater cel, int ilosc)
+        public void setZycie(int ilosc)
         {
-            if (cel.Zycie - ilosc <= 0)
+            if (Zycie - ilosc <= 0)
             {
-                cel.Zycie = 0;
-                Console.WriteLine($"Punkty życia gracza: {cel} spadły poniżej zera");
+                Zycie = 0;
+                Console.WriteLine($"Punkty życia gracza: {Imie} spadły poniżej zera");
             }
             else
             {
-                cel.Zycie -= ilosc;
+                Zycie -= ilosc;
+                Console.WriteLine($"Ilość życia gracza {Imie} wynosi: {Zycie}");
             }
         }
     }
