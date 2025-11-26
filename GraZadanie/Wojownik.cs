@@ -16,6 +16,21 @@ namespace GraZadanie
         {
             this.Imie = imie;
         }
+        //Przegląd informacji o bohaterze
+        public void przegladInf()
+        {
+            Console.WriteLine("=====================");
+            Console.WriteLine($"Informacje o bohaterze: ");
+            Console.WriteLine($"Nazwa: {Imie}");
+            Console.WriteLine($"Klasa: {Klasa}");
+            Console.WriteLine($"Zrowie: {Zycie} || Mana: {Mana}");
+            Console.WriteLine("=====================");
+        }
+        //Funkcja pobierająca życie bohatera
+        public int getZycie()
+        {
+            return Zycie;
+        }
         Random rand = new Random();
         public void atak_wojownika(Bohater cel)
         {
