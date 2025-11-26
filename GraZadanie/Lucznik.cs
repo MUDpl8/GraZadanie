@@ -66,5 +66,24 @@ namespace GraZadanie
                 wait = false;
             }
         }
+        //Interfejs do wyboru ataków
+        public void WybierzAtak(Bohater cel)
+        {
+            Console.WriteLine("Proszę wybrać atak do użycia: (1 - Strzał; 2 - Cięcie sztyletam; 3 - Precyzyjny strał)");
+            int wybor = Convert.ToInt32(Console.ReadLine());
+            switch (wybor)
+            {
+                case 1:
+                    Atak1(cel);
+                    break;
+                case 2:
+                    Atak2(cel);
+                    break;
+                case 3:
+                    Atak3(cel);
+                    break;
+            }
+
+        }
     }
 }
