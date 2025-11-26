@@ -10,6 +10,8 @@ namespace GraZadanie
     {
         private string Imie;
         private string Klasa = "Wojownik";
+        private int Zycie = 100;
+        private int Mana = 80;
         public Wojownik(string imie)
         {
             this.Imie = imie;

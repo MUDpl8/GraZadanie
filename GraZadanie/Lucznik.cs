@@ -67,7 +67,7 @@ namespace GraZadanie
                 Console.WriteLine($"Gracz {Imie} zadał {obrazenia} obrażeń {cel}");
             }
         }
-        public void Atak3(Bohater cel)//Precyzyjny strał
+        public void Atak3(Bohater cel)//Precyzyjny strzał
         {
             if (wait == false)
             {
@@ -86,7 +86,7 @@ namespace GraZadanie
         //Interfejs do wyboru ataków
         public void WybierzAtak(Bohater cel)
         {
-            Console.WriteLine("Proszę wybrać atak do użycia: (1 - Strzał; 2 - Cięcie sztyletam; 3 - Precyzyjny strał)");
+            Console.WriteLine("Proszę wybrać atak do użycia: (1 - Strzał; 2 - Cięcie sztyletam; 3 - Precyzyjny strzał)");
             int wybor = Convert.ToInt32(Console.ReadLine());
             switch (wybor)
             {
