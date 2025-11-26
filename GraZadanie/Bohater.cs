@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace GraZadanie
 {
     internal class Bohater
     {
         private string Imie;
+        private string Klasa;
         private int Zycie = 100;
-        private int Mana;
+        private int Mana = 80;
 
         public void setZycie(int ilosc)
         {
@@ -24,6 +27,19 @@ namespace GraZadanie
                 Zycie -= ilosc;
                 Console.WriteLine($"Ilość życia gracza {Imie} wynosi: {Zycie}");
             }
+        }
+        public void przegladInf()
+        {
+            Console.WriteLine("=====================");
+            Console.WriteLine($"Informacje o bohaterze: ");
+            Console.WriteLine($"Nazwa: {Imie}");
+            Console.WriteLine($"Klasa: {Klasa}");
+            Console.WriteLine($"Zrowie: {Zycie} || Mana: {Mana}");
+            Console.WriteLine("=====================");
+        }
+        public int getZycie()
+        {
+            return Zycie;
         }
     }
 }

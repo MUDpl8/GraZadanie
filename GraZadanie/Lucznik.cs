@@ -11,9 +11,26 @@ namespace GraZadanie
     {
         private string Imie;
         private string Klasa = "Łucznik";
+        private int Zycie = 100;
+        private int Mana = 80;
         public Lucznik(string imie)
         {
             this.Imie = imie;  
+        }
+        //Przegląd informacji o bohaterze
+        public void przegladInf()
+        {
+            Console.WriteLine("=====================");
+            Console.WriteLine($"Informacje o bohaterze: ");
+            Console.WriteLine($"Nazwa: {Imie}");
+            Console.WriteLine($"Klasa: {Klasa}");
+            Console.WriteLine($"Zrowie: {Zycie} || Mana: {Mana}");
+            Console.WriteLine("=====================");
+        }
+        //Funkcja pobierająca życie bohatera
+        public int getZycie()
+        {
+            return Zycie;
         }
         //Zmienna Random do losowania wyników ataku
         Random rnd = new Random();
