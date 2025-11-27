@@ -34,12 +34,6 @@ namespace GraZadanie
         {
             return Zycie;
         }
-        //funcka do uzycia many
-        public void UzyjMane(int uzycie)
-        {
-            Mana -= uzycie;
-            Console.WriteLine($"Ilość many gracza {Imie} wynosi: {Mana}");
-        }
         Random rand = new Random();
         //Atak 1 - Zwykły atak
         public void atak_wojownika(Bohater cel)
