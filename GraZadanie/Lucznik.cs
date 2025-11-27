@@ -45,11 +45,13 @@ namespace GraZadanie
                 Console.WriteLine($"Gracz {Imie} uzyskał krytyczne trafienie (DMG *2)!");
                 cel.setZycie(obrazenia * 2);
                 Console.WriteLine($"Gracz {Imie} zadał {obrazenia * 2} obrażeń {cel}");
+                Console.WriteLine($"{cel} zostało {cel.getZycie} zdrowia");
             }
             else
             {
                 cel.setZycie(obrazenia);
                 Console.WriteLine($"Gracz {Imie} zadał {obrazenia} obrażeń {cel}");
+                Console.WriteLine($"{cel} zostało {cel.getZycie} zdrowia");
             }
         }
         public void Atak2(Bohater cel)//Cięcie sztyletem
@@ -60,11 +62,13 @@ namespace GraZadanie
                 Console.WriteLine($"Gracz {Imie} uzyskał krytyczne trafienie (DMG *2)!");
                 cel.setZycie(obrazenia * 2);
                 Console.WriteLine($"Gracz {Imie} zadał {obrazenia * 2} obrażeń {cel}");
+                Console.WriteLine($"{cel} zostało {cel.getZycie} zdrowia");
             }
             else
             {
                 cel.setZycie(obrazenia);
                 Console.WriteLine($"Gracz {Imie} zadał {obrazenia} obrażeń {cel}");
+                Console.WriteLine($"{cel} zostało {cel.getZycie} zdrowia");
             }
         }
         public void Atak3(Bohater cel)//Precyzyjny strzał
@@ -80,6 +84,7 @@ namespace GraZadanie
                 Console.WriteLine($"Gracz {Imie} uzyskał krytyczne trafienie (DMG *2)!");
                 cel.setZycie(obrazenia * 2);
                 Console.WriteLine($"Gracz {Imie} zadał {obrazenia * 2} obrażeń {cel}");
+                Console.WriteLine($"{cel} zostało {cel.getZycie} zdrowia");
                 wait = false;
             }
         }
@@ -87,7 +92,7 @@ namespace GraZadanie
         public void WybierzAtak(Bohater cel)
         {
             Console.WriteLine("Proszę wybrać atak do użycia: (1 - Strzał; 2 - Cięcie sztyletam; 3 - Precyzyjny strzał)");
-            int wybor = Convert.ToInt32(Console.ReadLine());
+            int wybor = Convert.ToInt16(Console.ReadLine());
             switch (wybor)
             {
                 case 1:
@@ -98,6 +103,10 @@ namespace GraZadanie
                     break;
                 case 3:
                     Atak3(cel);
+                    break;
+                default:
+                    Console.WriteLine("Niepoprawny wybór ataku, spróbuj ponownie");
+                    WybierzAtak(cel);
                     break;
             }
 
