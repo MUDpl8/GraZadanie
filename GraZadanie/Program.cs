@@ -2,7 +2,6 @@
 
 //Definiowanie bohaterów i ich imion
 Lucznik Bohater1 = new Lucznik("Piotrek");
-Lucznik Bohater2 = new Lucznik("Dummy");
 
 //Lista przechowująca drużynę bohaterów
 List<Bohater> bohaterowie = new List<Bohater>()
