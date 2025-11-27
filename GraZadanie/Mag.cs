@@ -152,12 +152,23 @@ namespace GraZadanie
             {
                 if (Mana >= 25)
                 {
-                    int obrazenia = rnd.Next(5, 10);
+                    //TUTAJ ZROBIC 3 RAZY NA NEXT LEKCJI ALBO KTOS ZA MNIE BO W PIATEK MNIE NIE BEDZIE, MACIE KOD PRAKTYCZNIE GOOTWY JUZ
                     if (podwojenie == true)
-                    {
+                    {   
                         podwojenie = false;
-                        this.UzyjMane(25);
-                        Console.WriteLine($"Błogosławieństwo! {Imie} zadał {obrazenia} obrażenia");
+                        int obrazenia = rnd.Next(2, 10)*2;
+                        if (rnd.Next(1, 5) == 1)
+                        {
+                             obrazenia *= 2;
+                             this.UzyjMane(25);
+                            cel.setZycie(obrazenia);
+                            Console.WriteLine($"Błogosławieństwo oraz kryt! {Imie} zadał {obrazenia} obrażenia");
+                        }
+                        else
+                        {
+                            this.UzyjMane(25);
+                            Console.WriteLine($"Błogosławieństwo oraz kryt! {Imie} zadał {obrazenia} obrażenia");
+                        }
                     }
                 }
             }
