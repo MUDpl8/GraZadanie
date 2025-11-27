@@ -32,6 +32,7 @@ namespace GraZadanie
             return Zycie;
         }
         Random rand = new Random();
+        //Atak 1 - Zwykły atak
         public void atak_wojownika(Bohater cel)
         {
             int obrazenia = rand.Next(7, 11);
@@ -47,6 +48,7 @@ namespace GraZadanie
             }
             cel.setZycie(obrazenia);  
         }
+        //Atak 2 - Silny atak
         public void silny_atak_wojownika(Bohater cel)
         {
             int obrazenia = rand.Next(12,17);
@@ -58,6 +60,22 @@ namespace GraZadanie
             else
             {
                 Console.WriteLine($"{Imie} nie trafił");
+            }
+        }
+        //Interfejs wyboru ataku
+        public void wybor_ataku_wojownika(Bohater cel)
+        {
+            Console.WriteLine("Wybierz atak\n 1 - Zwykły atak\n 2 - Silny atak");
+            int wybor = Convert.ToInt32(Console.ReadLine());
+
+            switch(wybor)
+            {
+                case 1:
+                    atak_wojownika(cel);
+                break;
+                case 2:
+                    silny_atak_wojownika(cel);
+                break;
             }
         }
     }
