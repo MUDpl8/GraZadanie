@@ -63,6 +63,10 @@ namespace GraZadanie
                     Console.WriteLine($"Mag {Imie} ma {Mana} many");
                 }
             }
+            else
+            {
+                WybierzAtak(cel);
+            }
         }
         public void Kamehameha(Bohater cel)
         {
@@ -93,6 +97,10 @@ namespace GraZadanie
                     Console.WriteLine("Za mało many! Tracisz turę.");
                 }
 
+            }
+            else
+            {
+                WybierzAtak(cel);
             }
         }
         public void Błogosławieńśtwo(Bohater cel)
