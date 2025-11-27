@@ -32,6 +32,11 @@ namespace GraZadanie
         {
             return Zycie;
         }
+        //Pobieranie imienia bohatera
+        public string getImie()
+        {
+            return Imie;
+        }
         //Zmienna Random do losowania wyników ataku
         Random rnd = new Random();
         //Zmienna przechowująca stan ataku "Precyzyjny atak"

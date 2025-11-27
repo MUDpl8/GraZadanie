@@ -6,38 +6,33 @@ Wojownik Bohater2 = new Wojownik("Stachu");
 Mag Bohater3 = new Mag("Franus");
 
 //Lista przechowująca drużynę bohaterów
-List<Bohater> bohaterowie = new List<Bohater>()
-{
-     Bohater1, Bohater2, Bohater2
-};
+
 
 //Funkcja pozwalająca na wybranie celu ataku
-int wybierzCel()
+Bohater wybierzCel()
 {
-    Console.WriteLine($"Wybierz cel ataku (1 - {bohaterowie[0].getImie}, 2 - {bohaterowie[1].getImie}, 3 - {bohaterowie[2].getImie}): ");
+    Console.WriteLine($"Wybierz cel ataku (1 - {Bohater1.getImie()}, 2 - {Bohater2.getImie()}, 3 - {Bohater3.getImie()}, proszę nie atakuj siebie): ");
     int wybor = Convert.ToInt16(Console.ReadLine());
-    if (wybor == 1 || wybor == 2 || wybor == 3)
+    switch (wybor)
     {
-        Console.WriteLine($"Wybrano gracza {bohaterowie[wybor - 1].getImie}");
-        return wybor - 1;
-    }
-    else
-    {
-        Console.WriteLine($"Wprowadzono niepoprawną informację: {wybor}");
-        return -1;
+        case 1:
+            Console.WriteLine($"Wybrano gracza {Bohater1.getImie()}");
+            return Bohater1;
+        case 2:
+            Console.WriteLine($"Wybrano gracza {Bohater2.getImie()}");
+            return Bohater2;
+        case 3:
+            Console.WriteLine($"Wybrano gracza {Bohater3.getImie()}");
+            return Bohater3;
+        default:
+            Console.WriteLine($"Wprowadzono niepoprawną informację, spróbuj ponownie");
+            wybierzCel();
+            return Bohater1;
     }
 }
 
 //Główna pętla
 while (true) //Dodać warunek czy tylko jeden bohater nie jest martwy
 {
-    for(int i = 0; i < bohaterowie.Count(); i++)
-    {
-        Console.WriteLine($"Bohater {bohaterowie[i].getImie} rozpoczyna swoją turę");
-        while (wybierzCel() == -1)
-        {
-            Console.WriteLine("Wybór ataku nie powiódł się, spróbuj ponownie");
-        }
-        bohaterowie[i].WybierzAtak(bohaterowie[wybierzCel()]);
-    }
+    Bohater1.WybierzAtak(wybierzCel());
 }

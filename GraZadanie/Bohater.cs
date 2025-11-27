@@ -61,5 +61,6 @@ namespace GraZadanie
             Mana -= uzycie;
             Console.WriteLine($"Ilość many gracza {Imie} wynosi: {Mana}");
         }
+
     }
 }
