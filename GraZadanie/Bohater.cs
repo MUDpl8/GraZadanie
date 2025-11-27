@@ -41,5 +41,21 @@ namespace GraZadanie
         {
             return Zycie;
         }
+        public int getMana()
+        {
+            return Mana; 
+        }
+        //funckja do regenu many
+        public void RegenerujMane(int wartosc)
+        {
+            Mana += wartosc;
+            Console.WriteLine($"Ilość many gracza {Imie} wynosi: {Mana}");
+        }
+        //funcka do uzycia many
+        public void UzyjMane(int uzycie)
+        {
+            Mana -= uzycie;
+            Console.WriteLine($"Ilość many gracza {Imie} wynosi: {Mana}");
+        }
     }
 }
