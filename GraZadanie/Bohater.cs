@@ -37,6 +37,10 @@ namespace GraZadanie
             Console.WriteLine($"Zrowie: {Zycie} || Mana: {Mana}");
             Console.WriteLine("=====================");
         }
+        public string getImie()
+        {
+            return Imie;
+        }
         public int getZycie()
         {
             return Zycie;
