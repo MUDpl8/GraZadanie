@@ -18,7 +18,7 @@ namespace GraZadanie
             this.Imie = imie;  
         }
         //Przegląd informacji o bohaterze
-        public void przegladInf()
+        public new void przegladInf()
         {
             Console.WriteLine("=====================");
             Console.WriteLine($"Informacje o bohaterze: ");
@@ -28,12 +28,12 @@ namespace GraZadanie
             Console.WriteLine("=====================");
         }
         //Funkcja pobierająca życie bohatera
-        public int getZycie()
+        public new int getZycie()
         {
             return Zycie;
         }
         //Pobieranie imienia bohatera
-        public string getImie()
+        public new string getImie()
         {
             return Imie;
         }
@@ -106,7 +106,7 @@ namespace GraZadanie
                     break;
                 default:
                     Console.WriteLine("Niepoprawny wybór ataku, spróbuj ponownie");
-                    WybierzAtak(cel);
+                    WybierzAtakLucznik(cel);
                     break;
             }
 

@@ -17,7 +17,7 @@ namespace GraZadanie
             this.Imie = imie;
         }
         //Przegląd informacji o bohaterze
-        public void przegladInf()
+        public new void przegladInf()
         {
             Console.WriteLine("=====================");
             Console.WriteLine($"Informacje o bohaterze: ");
@@ -26,13 +26,26 @@ namespace GraZadanie
             Console.WriteLine($"Zrowie: {Zycie} || Mana: {Mana}");
             Console.WriteLine("=====================");
         }
-        public string getImie()
+        public new string getImie()
         {
             return Imie;
         }
-        public int getZycie()
+        public new int getZycie()
         {
             return Zycie;
+        }
+        public new void setZycie(int ilosc)
+        {
+            if (Zycie - ilosc <= 0)
+            {
+                Zycie = 0;
+                Console.WriteLine($"Punkty życia gracza: {Imie} spadły poniżej zera");
+            }
+            else
+            {
+                Zycie -= ilosc;
+                Console.WriteLine($"Ilość życia gracza {Imie} wynosi: {Zycie}");
+            }
         }
         Random rand = new Random();
         //Atak 1 - Zwykły atak

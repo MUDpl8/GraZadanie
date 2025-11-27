@@ -5,6 +5,12 @@ Lucznik Bohater1 = new Lucznik("Piotrek");
 Wojownik Bohater2 = new Wojownik("Stachu");
 Mag Bohater3 = new Mag("Franus");
 
+//Drużyna boahterów
+List<Bohater> gracze = new List<Lucznik, Wojownik, Mag>() //Problem z typami w liście
+{
+    Bohater1, Bohater2, Bohater3
+};
+
 //Funkcja pozwalająca na wybranie celu ataku
 Bohater wybierzCel()
 {
@@ -31,11 +37,12 @@ Bohater wybierzCel()
 //Główna pętla
 
 //Pobieranie ilości graczy
-int gracze = Convert.ToInt16(Console.ReadLine());
+Console.WriteLine("Proszę podać ilość graczy: ");
+int iloscGraczy = Convert.ToInt16(Console.ReadLine());
 
 //Zmienna losująca kolej którego gracza nastepuje i lista do sprawdzania, czy konkretny gracz, już wykonał swój ruch
-Random kolej = new Random();
-List<int> kolejnosc = new List<int>(gracze);
+Random rnd = new Random();
+List<int> kolejnosc = new List<int>(iloscGraczy);
 
 //Warunek: "Dopóki przynajmniej dwóch graczy jest żywych" gra toczy się dalej
 while ( 
@@ -48,5 +55,16 @@ while (
     (Bohater2.getZycie() > 0 && Bohater3.getZycie() > 0)
     )
 {
-   
+    //Sprawdzanie, czy dany gracz wykonał swój ruch
+    while (kolejnosc.Count() != iloscGraczy)
+    {
+        int kolej = rnd.Next(1, iloscGraczy + 1);
+        if (!kolejnosc.Contains(kolej))
+        {
+            kolejnosc.Add(kolej);
+        }
+    }
+    Console.WriteLine(kolejnosc.Count());
+    Console.ReadLine();
+    break;
 }

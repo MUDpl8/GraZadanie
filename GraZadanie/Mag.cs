@@ -18,7 +18,7 @@ namespace GraZadanie
             this.Imie = imie;
         }
         //Przegląd informacji o bohaterze
-        public void przegladInf()
+        public new void przegladInf()
         {
             Console.WriteLine("=====================");
             Console.WriteLine($"Informacje o bohaterze: ");
@@ -28,26 +28,26 @@ namespace GraZadanie
             Console.WriteLine("=====================");
         }
 
-        public string getImie()
+        public new string getImie()
         {
             return Imie;
         }
-        public int getZycie()
+        public new int getZycie()
         {
             return Zycie;
         }
-        public int getMana()
+        public new int getMana()
         {
             return Mana;
         }
         //funckja do regenu many
-        public void RegenerujMane(int wartosc)
+        public new void RegenerujMane(int wartosc)
         {
             Mana += wartosc;
             Console.WriteLine($"Ilość many gracza {Imie} wynosi: {Mana}");
         }
         //funcka do uzycia many
-        public void UzyjMane(int uzycie)
+        public new void UzyjMane(int uzycie)
         {
             Mana -= uzycie;
             Console.WriteLine($"Ilość many gracza {Imie} wynosi: {Mana}");
