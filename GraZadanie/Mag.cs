@@ -27,6 +27,11 @@ namespace GraZadanie
             Console.WriteLine($"Zrowie: {Zycie} || Mana: {Mana}");
             Console.WriteLine("=====================");
         }
+
+        public string getImie()
+        {
+            return Imie;
+        }
         public int getZycie()
         {
             return Zycie;
@@ -35,12 +40,24 @@ namespace GraZadanie
         {
             return Mana;
         }
+        //funckja do regenu many
+        public void RegenerujMane(int wartosc)
+        {
+            Mana += wartosc;
+            Console.WriteLine($"Ilość many gracza {Imie} wynosi: {Mana}");
+        }
+        //funcka do uzycia many
+        public void UzyjMane(int uzycie)
+        {
+            Mana -= uzycie;
+            Console.WriteLine($"Ilość many gracza {Imie} wynosi: {Mana}");
+        }
         Random rnd = new Random();
         public void KradziezMany(Bohater cel)
         {
             Console.WriteLine("Słaby atak, który kradnie przeciwnikowi część many. Użyć? (T/N)");
             string wybor = Console.ReadLine();
-            if (wybor == "T")
+            if (wybor == "T" || wybor == "t")
             {
                 if(podwojenie == true)
                 {
@@ -51,12 +68,13 @@ namespace GraZadanie
                     cel.UzyjMane(kradziez);
                     this.RegenerujMane(kradziez);
                     Console.WriteLine($"Mag {Imie} ma {Mana} many");
+                    podwojenie = false;
                 }
                 else
                 {
                     int obrazenia = rnd.Next(5, 16);
-                    int kradziez = rnd.Next(10, 21);
-                    Console.WriteLine($"Błogosławieństwo! {Imie} zadał {obrazenia} obrażeń, i ukradł {kradziez} many");
+                    int kradziez = rnd.Next(15, 26);
+                    Console.WriteLine($"{Imie} zadał {obrazenia} obrażeń, i ukradł {kradziez} many");
                     cel.setZycie(obrazenia);
                     cel.UzyjMane(kradziez);
                     this.RegenerujMane(kradziez);
@@ -72,7 +90,7 @@ namespace GraZadanie
         {
             Console.WriteLine("Silny atak, który kosztuje 35 many. Użyć? (T/N)");
             string wybor = Console.ReadLine();
-            if (wybor == "T")
+            if (wybor == "T" || wybor == "t")
             {
                 if (Mana >= 35)
                 {
@@ -82,11 +100,12 @@ namespace GraZadanie
                         Console.WriteLine($"Błogosławieńśtwo! {Imie} zadał {obrazenia} obrażeń");
                         cel.setZycie(obrazenia);
                         this.UzyjMane(35);
+                        podwojenie = false;
                     }
                     else
                     {
                         int obrazenia = rnd.Next(15, 31);
-                        Console.WriteLine($"Błogosławieńśtwo! {Imie} zadał {obrazenia} obrażeń");
+                        Console.WriteLine($"{Imie} zadał {obrazenia} obrażeń");
                         cel.setZycie(obrazenia);
                         this.UzyjMane(35);
                     }
@@ -107,7 +126,7 @@ namespace GraZadanie
         {
             Console.WriteLine($"Następny atak {Imie} zada podwójne obrażenia! Koszt: 15 many. Użyć? (T/N)");
             string wybor = Console.ReadLine();
-            if (wybor == "T")
+            if (wybor == "T" || wybor == "t")
             {
                 if (Mana >= 15)
                 {
@@ -125,9 +144,27 @@ namespace GraZadanie
                 WybierzAtak(cel);
             }
         }
+        public void KuleOgnia(Bohater cel)
+        {
+            Console.WriteLine($"Trzy ataki pod rząd z małą ilością obrażeń, każdy z szansą na kryta. 25 many. Użyć?");
+            string wybor = Console.ReadLine();
+            if (wybor == "T" || wybor == "t")
+            {
+                if (Mana >= 25)
+                {
+                    int obrazenia = rnd.Next(5, 10);
+                    if (podwojenie == true)
+                    {
+                        podwojenie = false;
+                        this.UzyjMane(25);
+                        Console.WriteLine($"Błogosławieństwo! {Imie} zadał {obrazenia} obrażenia");
+                    }
+                }
+            }
+        }
         public void WybierzAtak(Bohater cel)
         {
-            Console.WriteLine("Proszę wybrać atak do użycia: (1 - Strzał; 2 - Cięcie sztyletam; 3 - Precyzyjny strzał)");
+            Console.WriteLine("Proszę wybrać atak do użycia: (1 - KradziezMany; 2 - Kamehameha; 3 - Błogosławieństwo)");
             int wybor = Convert.ToInt32(Console.ReadLine());
             switch (wybor)
             {
