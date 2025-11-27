@@ -48,15 +48,13 @@ namespace GraZadanie
             if (rnd.Next(1, 11) == 10)
             {
                 Console.WriteLine($"Gracz {Imie} uzyskał krytyczne trafienie (DMG *2)!");
+                Console.WriteLine($"Gracz {Imie} zadał {obrazenia * 2} obrażeń");
                 cel.setZycie(obrazenia * 2);
-                Console.WriteLine($"Gracz {Imie} zadał {obrazenia * 2} obrażeń {cel.getImie()}");
-                Console.WriteLine($"{cel} zostało {cel.getZycie()} zdrowia");
             }
             else
             {
+                Console.WriteLine($"Gracz {Imie} zadał {obrazenia} obrażeń");
                 cel.setZycie(obrazenia);
-                Console.WriteLine($"Gracz {Imie} zadał {obrazenia} obrażeń {cel.getImie()}");
-                Console.WriteLine($"{cel} zostało {cel.getZycie()} zdrowia");
             }
         }
         public void Atak2(Bohater cel)//Cięcie sztyletem
@@ -65,15 +63,13 @@ namespace GraZadanie
             if (rnd.Next(1, 11) >= 7)
             {
                 Console.WriteLine($"Gracz {Imie} uzyskał krytyczne trafienie (DMG *2)!");
+                Console.WriteLine($"Gracz {Imie} zadał {obrazenia * 2} obrażeń");
                 cel.setZycie(obrazenia * 2);
-                Console.WriteLine($"Gracz {Imie} zadał {obrazenia * 2} obrażeń {cel.getImie()}");
-                Console.WriteLine($"{cel.getImie()} zostało {cel.getZycie()} zdrowia");
             }
             else
             {
+                Console.WriteLine($"Gracz {Imie} zadał {obrazenia} obrażeń");
                 cel.setZycie(obrazenia);
-                Console.WriteLine($"Gracz {Imie} zadał {obrazenia} obrażeń {cel.getImie()}");
-                Console.WriteLine($"{cel.getImie()} zostało {cel.getZycie()} zdrowia");
             }
         }
         public void Atak3(Bohater cel)//Precyzyjny strzał
@@ -87,14 +83,13 @@ namespace GraZadanie
             {
                 int obrazenia = rnd.Next(20, 31);
                 Console.WriteLine($"Gracz {Imie} uzyskał krytyczne trafienie (DMG *2)!");
+                Console.WriteLine($"Gracz {Imie} zadał {obrazenia * 2} obrażeń");
                 cel.setZycie(obrazenia * 2);
-                Console.WriteLine($"Gracz {Imie} zadał {obrazenia * 2} obrażeń {cel.getImie()}");
-                Console.WriteLine($"{cel.getImie()} zostało {cel.getZycie()} zdrowia");
                 wait = false;
             }
         }
         //Interfejs do wyboru ataków
-        public void WybierzAtak(Bohater cel)
+        public void WybierzAtakLucznik(Bohater cel)
         {
             Console.WriteLine("Proszę wybrać atak do użycia: (1 - Strzał; 2 - Cięcie sztyletam; 3 - Precyzyjny strzał)");
             int wybor = Convert.ToInt16(Console.ReadLine());
