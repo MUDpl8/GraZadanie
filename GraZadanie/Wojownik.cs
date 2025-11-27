@@ -54,7 +54,15 @@ namespace GraZadanie
             int obrazenia = rand.Next(12,17);
             if (rand.Next(1, 6) == 2)
             {
-                Console.WriteLine($"{Imie} zadał {obrazenia} obrażeń");
+                if (rand.Next(1, 5) == 2)
+                {
+                    obrazenia = obrazenia * 2;
+                    Console.WriteLine($"{Imie} zadał krytyka za {obrazenia} obrażeń");
+                }
+                else
+                {
+                    Console.WriteLine($"{Imie} zadał {obrazenia} obrażeń");
+                }     
                 cel.setZycie(obrazenia);
             }
             else
@@ -66,23 +74,41 @@ namespace GraZadanie
         public void kradziez_atak_wojownika(Bohater cel)
         {
             int obrazenia = rand.Next(3, 7);
-            cel.setZycie(obrazenia);  
-            Console.WriteLine($"{Imie} zadał {obrazenia} obrażeń i wyleczył {obrazenia} punktów życia");
+            if (rand.Next(1, 5) == 2)
+            {
+                obrazenia = obrazenia * 2;
+                cel.setZycie(obrazenia);
+                Console.WriteLine($"{Imie} zadał krytyka za {obrazenia} obrażeń i wyleczył {obrazenia} punktów życia");
+            }
+            else
+            {
+                cel.setZycie(obrazenia);
+                Console.WriteLine($"{Imie} zadał {obrazenia} obrażeń i wyleczył {obrazenia} punktów życia");
+            } 
             setZycie(-obrazenia);
         }
         //Atak 4 - Furia
         public void furia_atak_wojownika(Bohater cel)
         {
             int obrazenia = rand.Next(14,20);
-            cel.setZycie(obrazenia);
-            Console.WriteLine($"{Imie} zadał {obrazenia} obrażeń i sam stracił {obrazenia} punktów życia");
+            if (rand.Next(1, 5) == 2)
+            {
+                obrazenia = obrazenia * 2;
+                cel.setZycie(obrazenia);
+                Console.WriteLine($"{Imie} zadał krytyka za {obrazenia} obrażeń i sam stracił {obrazenia} punktów życia");
+            }
+            else
+            {
+                cel.setZycie(obrazenia);
+                Console.WriteLine($"{Imie} zadał {obrazenia} obrażeń i sam stracił {obrazenia} punktów życia");
+            }
             setZycie(obrazenia);
         }
         //Interfejs wyboru ataku
         public void wybor_ataku_wojownika(Bohater cel)
         {
             Console.WriteLine("Wybierz atak\n 1 - Zwykły atak\n 2 - Silny atak\n 3 - Kradzież życia\n 4 - Furia");
-            int wybor = Convert.ToInt32(Console.ReadLine());
+            int wybor = Convert.ToInt16(Console.ReadLine());
 
             switch(wybor)
             {
