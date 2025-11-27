@@ -2,11 +2,13 @@
 
 //Definiowanie bohaterów i ich imion
 Lucznik Bohater1 = new Lucznik("Piotrek");
+Wojownik Bohater2 = new Wojownik("Stachu");
+Mag Bohater3 = new Mag("Franus");
 
 //Lista przechowująca drużynę bohaterów
 List<Bohater> bohaterowie = new List<Bohater>()
 {
-     Bohater1//, Bohater2, Bohater2
+     Bohater1, Bohater2, Bohater2
 };
 
 //Funkcja pozwalająca na wybranie celu ataku
@@ -36,6 +38,6 @@ while (true) //Dodać warunek czy tylko jeden bohater nie jest martwy
         {
             Console.WriteLine("Wybór ataku nie powiódł się, spróbuj ponownie");
         }
-        Bohater1.WybierzAtak(bohaterowie[wybierzCel()]);
+        bohaterowie[i].WybierzAtak(bohaterowie[wybierzCel()]);
     }
 }
