@@ -70,6 +70,7 @@ namespace GraZadanie
             Console.WriteLine($"{Imie} zadał {obrazenia} obrażeń i wyleczył {obrazenia} punktów życia");
             setZycie(-obrazenia);
         }
+        //Atak 4 - Furia
         public void furia_atak_wojownika(Bohater cel)
         {
             int obrazenia = rand.Next(14,20);
