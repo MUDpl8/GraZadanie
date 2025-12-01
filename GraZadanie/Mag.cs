@@ -83,7 +83,7 @@ namespace GraZadanie
             }
             else
             {
-                WybierzAtak(cel);
+                WybierzAtakMag(cel);
             }
         }
         public void Kamehameha(Bohater cel)
@@ -119,7 +119,7 @@ namespace GraZadanie
             }
             else
             {
-                WybierzAtak(cel);
+                WybierzAtakMag(cel);
             }
         }
         public void Błogosławieńśtwo(Bohater cel)
@@ -141,7 +141,7 @@ namespace GraZadanie
             }
             else
             {
-                WybierzAtak(cel);
+                WybierzAtakMag(cel);
             }
         }
         public void KuleOgnia(Bohater cel)
@@ -173,7 +173,7 @@ namespace GraZadanie
                 }
             }
         }
-        public void WybierzAtak(Bohater cel)
+        public void WybierzAtakMag(Bohater cel)
         {
             Console.WriteLine("Proszę wybrać atak do użycia: (1 - KradziezMany; 2 - Kamehameha; 3 - Błogosławieństwo)");
             int wybor = Convert.ToInt32(Console.ReadLine());

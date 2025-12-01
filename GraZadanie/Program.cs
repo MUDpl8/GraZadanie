@@ -6,7 +6,7 @@ Wojownik Bohater2 = new Wojownik("Stachu");
 Mag Bohater3 = new Mag("Franus");
 
 //Drużyna boahterów
-List<Bohater> gracze = new List<Lucznik, Wojownik, Mag>() //Problem z typami w liście
+List<Bohater> gracze = new List<Bohater>()
 {
     Bohater1, Bohater2, Bohater3
 };
@@ -62,8 +62,35 @@ while (
         if (!kolejnosc.Contains(kolej))
         {
             kolejnosc.Add(kolej);
+            switch (kolej)
+            {
+                case 1:
+                    Console.WriteLine("--------------------------------------------");
+                    Console.WriteLine($"Turę rozpoczyna gracz: {Bohater1.getImie()}");
+                    Console.WriteLine("--------------------------------------------");
+                    Bohater1.WybierzAtakLucznik(wybierzCel());
+                    break;
+                case 2:
+                    Console.WriteLine("--------------------------------------------");
+                    Console.WriteLine($"Turę rozpoczyna gracz: {Bohater2.getImie()}");
+                    Console.WriteLine("--------------------------------------------");
+                    Bohater2.wybor_ataku_wojownika(wybierzCel());
+                    break;
+                case 3:
+                    Console.WriteLine("--------------------------------------------");
+                    Console.WriteLine($"Turę rozpoczyna gracz: {Bohater3.getImie()}");
+                    Console.WriteLine("--------------------------------------------");
+                    Bohater3.WybierzAtakMag(wybierzCel());
+                    break;
+            }
         }
     }
+    Console.WriteLine($"Informacje graczy bo bierzącej rundzie: ");
+    foreach (var gracz in gracze)
+    {
+        gracz.przegladInf();
+    }
+    kolejnosc.Clear();
     Console.WriteLine(kolejnosc.Count());
     Console.ReadLine();
     break;
