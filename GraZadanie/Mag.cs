@@ -144,35 +144,7 @@ namespace GraZadanie
                 WybierzAtakMag(cel);
             }
         }
-        public void KuleOgnia(Bohater cel)
-        {
-            Console.WriteLine($"Trzy ataki pod rząd z małą ilością obrażeń, każdy z szansą na kryta. 25 many. Użyć?");
-            string wybor = Console.ReadLine();
-            if (wybor == "T" || wybor == "t")
-            {
-                if (Mana >= 25)
-                {
-                    //TUTAJ ZROBIC 3 RAZY NA NEXT LEKCJI ALBO KTOS ZA MNIE BO W PIATEK MNIE NIE BEDZIE, MACIE KOD PRAKTYCZNIE GOOTWY JUZ
-                    if (podwojenie == true)
-                    {   
-                        podwojenie = false;
-                        int obrazenia = rnd.Next(2, 10)*2;
-                        if (rnd.Next(1, 5) == 1)
-                        {
-                             obrazenia *= 2;
-                             this.UzyjMane(25);
-                            cel.setZycie(obrazenia);
-                            Console.WriteLine($"Błogosławieństwo oraz kryt! {Imie} zadał {obrazenia} obrażenia");
-                        }
-                        else
-                        {
-                            this.UzyjMane(25);
-                            Console.WriteLine($"Błogosławieństwo oraz kryt! {Imie} zadał {obrazenia} obrażenia");
-                        }
-                    }
-                }
-            }
-        }
+        
         public void WybierzAtakMag(Bohater cel)
         {
             Console.WriteLine("Proszę wybrać atak do użycia: (1 - KradziezMany; 2 - Kamehameha; 3 - Błogosławieństwo)");
