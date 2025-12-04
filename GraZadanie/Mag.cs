@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraZadanie
 {
-    internal class Mag : Bohater
+    internal interface Mag
     {
         private string Imie;
         private string Klasa = "Mag";

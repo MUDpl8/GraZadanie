@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraZadanie
 {
-    internal class Wojownik:Bohater
+    internal interface Wojownik
     {
         private string Imie;
         private string Klasa = "Wojownik";
