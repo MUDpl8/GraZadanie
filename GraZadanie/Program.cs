@@ -1,16 +1,7 @@
 ﻿using GraZadanie;
 
-//Definiowanie bohaterów i ich imion
-Bohater dummy = new Bohater("Dummy", "Bohater");
-Bohater Bohater1 = new Bohater("Piotrek", "Łucznik");
-Bohater Bohater2 = new Bohater("Stachu", "Wojownik");
-Bohater Bohater3 = new Bohater("Franus", "Mag");
-
 //Drużyna boahterów
-List<Bohater> gracze = new List<Bohater>()
-{
-    Bohater1, Bohater2, Bohater3
-};
+List<Bohater> gracze = new List<Bohater>();
 
 //Funkcja pozwalająca na wybranie celu ataku
 Bohater wybierzCel()
@@ -36,6 +27,34 @@ Bohater wybierzCel()
 //Pobieranie ilości graczy
 Console.WriteLine("Proszę podać ilość graczy: ");
 int iloscGraczy = Convert.ToInt16(Console.ReadLine());
+//Ustawianie imion bohaterów i wybór klas przez graczy
+for (int i = 0; i < iloscGraczy; i++)
+{
+    Console.WriteLine($"Podaj imię bohatera nr {i + 1} (proszę nie zostawiać pustego pola): ");
+    string Imie = Console.ReadLine();
+    Console.WriteLine($"Proszę wybrać klasę bohatera (dostępne klasy: 1 - Łucznik, 2 - Wojownik, 3 - Mag): ");
+    int KlasaWybor = Convert.ToInt16(Console.ReadLine());
+    string Klasa = "";
+    switch (KlasaWybor)
+    {
+        case 1:
+            Klasa = "Łucznik";
+            break;
+        case 2:
+            Klasa = "Wojownik";
+            break;
+        case 3:
+            Klasa = "Mag";
+            break;
+        default:
+            Console.WriteLine("Podano niepoprawny format wyboru, ustawiono klasę na: Łucznik");
+            Klasa = "Łucznik";
+            break;
+    }
+    Bohater Bohater = new Bohater(Imie, Klasa);
+    gracze.Add(Bohater);
+}
+
 
 //Zmienna losująca kolej którego gracza nastepuje i lista do sprawdzania, czy konkretny gracz, już wykonał swój ruch
 Random rnd = new Random();
@@ -43,16 +62,20 @@ List<int> kolejnosc = new List<int>(iloscGraczy);
 
 //Warunek: "Dopóki przynajmniej dwóch graczy jest żywych" gra toczy się dalej
 
-while (//gracze.All(gracz => gracz.getZycie() != 0)
-        (Bohater1.getZycie() > 0 && Bohater2.getZycie() > 0 && Bohater3.getZycie() > 0)
-        ||
-        (Bohater1.getZycie() > 0 && Bohater2.getZycie() > 0)
-        ||
-        (Bohater1.getZycie() > 0 && Bohater3.getZycie() > 0)
-        ||
-        (Bohater2.getZycie() > 0 && Bohater3.getZycie() > 0)
-       )
+while (true)
 {
+    int spr = 0;
+    foreach (var gracz in gracze)
+    {
+        if (gracz.getZycie() == 0)
+        {
+            spr++;
+        }
+    }
+    if (spr == iloscGraczy - 1)
+    {
+        break;
+    }
     //Sprawdzanie, czy dany gracz wykonał swój ruch
     while (kolejnosc.Count() != iloscGraczy)
     {
@@ -100,5 +123,16 @@ while (//gracze.All(gracz => gracz.getZycie() != 0)
     {
         gracz.przegladInf();
     }
+    //Resetowanie tur graczy
     kolejnosc.Clear();
 }
+
+//Ogłoszenie zwycięscy
+foreach (var gracz in gracze)
+{
+    if (gracz.getZycie() != 0)
+    {
+        Console.WriteLine($"Wygrywa gracz {gracz.getImie()}");
+    }
+}
+Console.ReadLine();

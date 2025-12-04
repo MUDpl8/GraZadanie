@@ -12,7 +12,7 @@ namespace GraZadanie
     {
         private string Imie;
         private string Klasa;
-        private int Zycie = 5;
+        private int Zycie = 100;
         private int Mana = 80;
         public Bohater(string imie, string klasa)
         {
@@ -20,7 +20,7 @@ namespace GraZadanie
             this.Klasa = klasa;
             if (klasa == "Mag")
             {
-                this.Zycie = 5;
+                this.Zycie = 70;
                 this.Mana = 100;
             }
         }
@@ -119,7 +119,7 @@ namespace GraZadanie
         {
             if (wait == false)
             {
-                Console.WriteLine($"Gracz {Imie} przygotowuje się do precyzyjnego ataku (uzyska grwarantowane krytyczne trafienie)");
+                Console.WriteLine($"Gracz {Imie} przygotowuje się do precyzyjnego ataku w następnej turze(uzyska grwarantowane krytyczne trafienie)");
                 wait = true;
             }
             else if (wait == true)
@@ -134,30 +134,38 @@ namespace GraZadanie
         //Interfejs do wyboru ataków
         public void WybierzAtakLucznik(Bohater cel)
         {
+            if(wait != true) 
+            { 
             Console.WriteLine("Proszę wybrać atak do użycia: (1 - Strzał; 2 - Cięcie sztyletam; 3 - Precyzyjny strzał)");
             int wybor = Convert.ToInt16(Console.ReadLine());
-            switch (wybor)
+                switch (wybor)
+                {
+                    case 1:
+                        Atak1(cel);
+                        break;
+                    case 2:
+                        Atak2(cel);
+                        break;
+                    case 3:
+                        Atak3(cel);
+                        break;
+                    default:
+                        Console.WriteLine("Niepoprawny wybór ataku, spróbuj ponownie");
+                        WybierzAtakLucznik(cel);
+                        break;
+                }
+            }
+            else
             {
-                case 1:
-                    Atak1(cel);
-                    break;
-                case 2:
-                    Atak2(cel);
-                    break;
-                case 3:
-                    Atak3(cel);
-                    break;
-                default:
-                    Console.WriteLine("Niepoprawny wybór ataku, spróbuj ponownie");
-                    WybierzAtakLucznik(cel);
-                    break;
+                Console.WriteLine($"Gracz {Imie} wykonuje precyzyjny atak");
+                Atak3(cel);
             }
 
         }
 
         //=================================================================================================================================================
 
-        //Interfejs Maga
+            //Interfejs Maga
         private bool podwojenie = false;
         
         public void KradziezMany(Bohater cel)
