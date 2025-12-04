@@ -9,19 +9,6 @@ namespace GraZadanie
 {
     internal interface Lucznik
     {
-        //Przegląd informacji o bohaterze
-        private void przegladInf() { }
-
-        //Funkcja pobierająca życie bohatera
-        private int getZycie()
-        {
-            return 0;
-        }
-        //Pobieranie imienia bohatera
-        private string getImie()
-        {
-            return "0";
-        }
         //Różne ataki
         private void Atak1(Bohater cel)//Strzał
         {

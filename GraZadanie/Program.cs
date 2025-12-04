@@ -2,7 +2,7 @@
 
 //Definiowanie bohaterów i ich imion
 Bohater dummy = new Bohater("Dummy", "Bohater");
-Bohater Bohater1 = new Bohater("Piotrek", "Lucznik");
+Bohater Bohater1 = new Bohater("Piotrek", "Łucznik");
 Bohater Bohater2 = new Bohater("Stachu", "Wojownik");
 Bohater Bohater3 = new Bohater("Franus", "Mag");
 
@@ -15,24 +15,20 @@ List<Bohater> gracze = new List<Bohater>()
 //Funkcja pozwalająca na wybranie celu ataku
 Bohater wybierzCel()
 {
-    Console.WriteLine($"Wybierz cel ataku (1 - {Bohater1.getImie()}, 2 - {Bohater2.getImie()}, 3 - {Bohater3.getImie()}, proszę nie atakuj siebie): ");
-    int wybor = Convert.ToInt16(Console.ReadLine());
-    switch (wybor)
+    Console.WriteLine("Wybierz cel twojego ataku, dotępni gracze: ");
+    int i = 1;
+    foreach (var gracz in gracze)
     {
-        case 1:
-            Console.WriteLine($"Wybrano gracza {Bohater1.getImie()}");
-            return Bohater1;
-        case 2:
-            Console.WriteLine($"Wybrano gracza {Bohater2.getImie()}");
-            return Bohater2;
-        case 3:
-            Console.WriteLine($"Wybrano gracza {Bohater3.getImie()}");
-            return Bohater3;
-        default:
-            Console.WriteLine($"Wprowadzono niepoprawną informację, spróbuj ponownie");
-            wybierzCel();
-            return dummy;
+        if (gracz.getZycie() == 0)
+        {
+            continue;
+        }
+        Console.WriteLine($"{i} - {gracz.getImie()}");
+        i++;
     }
+    int wybor = Convert.ToInt16(Console.ReadLine()) - 1;
+    Console.WriteLine($"Wybrano gracza {gracze[wybor].getImie()}");
+    return gracze[wybor];
 }
 
 //Główna pętla
@@ -46,52 +42,63 @@ Random rnd = new Random();
 List<int> kolejnosc = new List<int>(iloscGraczy);
 
 //Warunek: "Dopóki przynajmniej dwóch graczy jest żywych" gra toczy się dalej
-while ( 
-    (Bohater1.getZycie() > 0 && Bohater2.getZycie() > 0 && Bohater3.getZycie() > 0)
-    || 
-    (Bohater1.getZycie() > 0 && Bohater2.getZycie() > 0) 
-    || 
-    (Bohater1.getZycie() > 0 && Bohater3.getZycie() > 0)
-    ||
-    (Bohater2.getZycie() > 0 && Bohater3.getZycie() > 0)
-    )
+
+while (//gracze.All(gracz => gracz.getZycie() != 0)
+        (Bohater1.getZycie() > 0 && Bohater2.getZycie() > 0 && Bohater3.getZycie() > 0)
+        ||
+        (Bohater1.getZycie() > 0 && Bohater2.getZycie() > 0)
+        ||
+        (Bohater1.getZycie() > 0 && Bohater3.getZycie() > 0)
+        ||
+        (Bohater2.getZycie() > 0 && Bohater3.getZycie() > 0)
+       )
 {
     //Sprawdzanie, czy dany gracz wykonał swój ruch
     while (kolejnosc.Count() != iloscGraczy)
     {
-        int kolej = rnd.Next(1, iloscGraczy + 1);
+        int kolej = rnd.Next(0, iloscGraczy);
         if (!kolejnosc.Contains(kolej))
         {
             kolejnosc.Add(kolej);
-            switch (kolej)
+            switch (gracze[kolej].getKlasa())
             {
-                case 1:
+                case "Łucznik":
+                    if (gracze[kolej].getZycie() == 0)
+                    {
+                        break;
+                    }
                     Console.WriteLine("--------------------------------------------");
-                    Console.WriteLine($"Turę rozpoczyna gracz: {Bohater1.getImie()}");
+                    Console.WriteLine($"Turę rozpoczyna gracz: {gracze[kolej].getImie()}");
                     Console.WriteLine("--------------------------------------------");
-                    Bohater1.WybierzAtakLucznik(wybierzCel());
+                    gracze[kolej].WybierzAtakLucznik(wybierzCel());
                     break;
-                case 2:
+                case "Wojownik":
+                    if (gracze[kolej].getZycie() == 0)
+                    {
+                        break;
+                    }
                     Console.WriteLine("--------------------------------------------");
-                    Console.WriteLine($"Turę rozpoczyna gracz: {Bohater2.getImie()}");
+                    Console.WriteLine($"Turę rozpoczyna gracz: {gracze[kolej].getImie()}");
                     Console.WriteLine("--------------------------------------------");
-                    Bohater2.wybor_ataku_wojownika(wybierzCel());
+                    gracze[kolej].wybor_ataku_wojownika(wybierzCel());
                     break;
-                case 3:
+                case "Mag":
+                    if (gracze[kolej].getZycie() == 0)
+                    {
+                        break;
+                    }
                     Console.WriteLine("--------------------------------------------");
-                    Console.WriteLine($"Turę rozpoczyna gracz: {Bohater3.getImie()}");
+                    Console.WriteLine($"Turę rozpoczyna gracz: {gracze[kolej].getImie()}");
                     Console.WriteLine("--------------------------------------------");
-                    Bohater3.WybierzAtakMag(wybierzCel());
+                    gracze[kolej].WybierzAtakMag(wybierzCel());
                     break;
             }
         }
     }
     Console.WriteLine($"Informacje graczy bo bierzącej rundzie: ");
-    Bohater1.przegladInf();
-    Bohater2.przegladInf();
-    Bohater3.przegladInf();
+    foreach (var gracz in gracze)
+    {
+        gracz.przegladInf();
+    }
     kolejnosc.Clear();
-    Console.WriteLine(kolejnosc.Count());
-    Console.ReadLine();
-    break;
 }
