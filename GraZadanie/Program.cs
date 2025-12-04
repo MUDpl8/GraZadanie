@@ -59,22 +59,31 @@ for (int i = 0; i < iloscGraczy; i++)
 //Zmienna losująca kolej którego gracza nastepuje i lista do sprawdzania, czy konkretny gracz, już wykonał swój ruch
 Random rnd = new Random();
 List<int> kolejnosc = new List<int>(iloscGraczy);
+//Lista kontrolna upewniająca się, że bohater który umarł nie może zostać wybrany jako cel ataku
+List<int> usun = new List<int>(iloscGraczy);
 
 //Warunek: "Dopóki przynajmniej dwóch graczy jest żywych" gra toczy się dalej
 
 while (true)
 {
     int spr = 0;
+    int i = 0;
     foreach (var gracz in gracze)
     {
         if (gracz.getZycie() == 0)
         {
             spr++;
+            usun.Add(i);
         }
+        i++;
     }
     if (spr == iloscGraczy - 1)
     {
         break;
+    }
+    for (int j = 0; j < usun.Count(); j++)
+    {
+        gracze.RemoveAt(usun[j]);
     }
     //Sprawdzanie, czy dany gracz wykonał swój ruch
     while (kolejnosc.Count() != iloscGraczy)
@@ -124,6 +133,7 @@ while (true)
         gracz.przegladInf();
     }
     //Resetowanie tur graczy
+    usun.Clear();
     kolejnosc.Clear();
 }
 

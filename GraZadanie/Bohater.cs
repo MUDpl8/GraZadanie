@@ -23,6 +23,10 @@ namespace GraZadanie
                 this.Zycie = 70;
                 this.Mana = 100;
             }
+            else if (klasa == "Łucznik")
+            {
+                this.Zycie = 75;
+            }
         }
         public void przegladInf()
         {
@@ -124,7 +128,7 @@ namespace GraZadanie
             }
             else if (wait == true)
             {
-                int obrazenia = rnd.Next(20, 31);
+                int obrazenia = rnd.Next(20, 26);
                 Console.WriteLine($"Gracz {Imie} uzyskał krytyczne trafienie (DMG *2)!");
                 Console.WriteLine($"Gracz {Imie} zadał {obrazenia * 2} obrażeń");
                 cel.setZycie(obrazenia * 2);
