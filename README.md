@@ -1,1 +1,1 @@
-Projekt gry na zajęcia z programowania wykonachy przez: MUDpl8 (Piotr Kruk); Szachh (Stanisław Szaranowski); Widigiusz (Franciszek Łaba)
+Projekt gry na zajęcia z programowania wykonachy przez: Peter_Crowfin (Piotr Kruk); Szachh (Stanisław Szaranowski); Widigiusz (Franciszek Łaba)
