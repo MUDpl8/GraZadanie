@@ -1,9 +1,10 @@
 ﻿using GraZadanie;
 
 //Definiowanie bohaterów i ich imion
-Lucznik Bohater1 = new Lucznik("Piotrek");
-Wojownik Bohater2 = new Wojownik("Stachu");
-Mag Bohater3 = new Mag("Franus");
+Bohater dummy = new Bohater("Dummy", "Bohater");
+Bohater Bohater1 = new Bohater("Piotrek", "Lucznik");
+Bohater Bohater2 = new Bohater("Stachu", "Wojownik");
+Bohater Bohater3 = new Bohater("Franus", "Mag");
 
 //Drużyna boahterów
 List<Bohater> gracze = new List<Bohater>()
@@ -30,7 +31,7 @@ Bohater wybierzCel()
         default:
             Console.WriteLine($"Wprowadzono niepoprawną informację, spróbuj ponownie");
             wybierzCel();
-            return Bohater1;
+            return dummy;
     }
 }
 
@@ -86,10 +87,9 @@ while (
         }
     }
     Console.WriteLine($"Informacje graczy bo bierzącej rundzie: ");
-    foreach (var gracz in gracze)
-    {
-        gracz.przegladInf();
-    }
+    Bohater1.przegladInf();
+    Bohater2.przegladInf();
+    Bohater3.przegladInf();
     kolejnosc.Clear();
     Console.WriteLine(kolejnosc.Count());
     Console.ReadLine();
