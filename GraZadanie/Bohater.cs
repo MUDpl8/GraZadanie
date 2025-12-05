@@ -12,7 +12,7 @@ namespace GraZadanie
     {
         private string Imie;
         private string Klasa;
-        private int Zycie = 100;
+        private int Zycie = 1;
         private int Mana = 80;
         public Bohater(string imie, string klasa)
         {

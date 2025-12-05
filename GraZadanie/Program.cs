@@ -12,10 +12,14 @@ Bohater wybierzCel()
     {
         if (gracz.getZycie() == 0)
         {
-            continue;
+            Console.WriteLine($"{i} - Zwłoki gracza {gracz.getImie()}");
+            i++;
         }
-        Console.WriteLine($"{i} - {gracz.getImie()}");
-        i++;
+        else
+        {
+            Console.WriteLine($"{i} - {gracz.getImie()}");
+            i++;
+        }
     }
     int wybor = Convert.ToInt16(Console.ReadLine()) - 1;
     Console.WriteLine($"Wybrano gracza {gracze[wybor].getImie()}");
@@ -66,25 +70,20 @@ List<int> usun = new List<int>(iloscGraczy);
 
 while (true)
 {
+    Console.WriteLine(gracze);
     int spr = 0;
-    int i = 0;
     foreach (var gracz in gracze)
     {
         if (gracz.getZycie() == 0)
         {
             spr++;
-            usun.Add(i);
         }
-        i++;
     }
     if (spr == iloscGraczy - 1)
     {
         break;
     }
-    for (int j = 0; j < usun.Count(); j++)
-    {
-        gracze.RemoveAt(usun[j]);
-    }
+    Console.WriteLine(gracze);
     //Sprawdzanie, czy dany gracz wykonał swój ruch
     while (kolejnosc.Count() != iloscGraczy)
     {
