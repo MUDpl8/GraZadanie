@@ -30,17 +30,23 @@ namespace GraZadanie
 
         private void Zycie(Bohater cel)
         {
-            cel.setZycie(- rnd.Next(20, 41));
+            int ilosc = -rnd.Next(20, 41);
+            Console.WriteLine($"Gracz {cel} zregenerował {ilosc} życia");
+            cel.setZycie(ilosc);
         }
 
         private void Mana(Bohater cel)
         {
-            cel.RegenerujMane(rnd.Next(30, 41));
+            int ilosc = rnd.Next(30, 41);
+            Console.WriteLine($"Gracz {cel} zregenerował {ilosc} many");
+            cel.RegenerujMane(ilosc);
         }
 
         private void Obrazenia(Bohater cel)
         {
-            cel.setZycie(rnd.Next(1, 101));
+            int ilosc = rnd.Next(1, 101);
+            Console.WriteLine($"Zadano {ilosc} obrarzeń graczowi {cel}");
+            cel.setZycie(ilosc);
         }
 
         public void UzyjPrzedmiot(Przedmiot przedmiot, Bohater cel)
@@ -53,7 +59,7 @@ namespace GraZadanie
                 case "Mikstura Many":
                     Mana(cel);
                     break;
-                case "Mikstura Wzmocnienia":
+                case "Mikstura Obrarzeń":
                     Obrazenia(cel);
                     break;
             }

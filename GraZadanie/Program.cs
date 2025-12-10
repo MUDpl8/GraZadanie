@@ -6,7 +6,7 @@ List<Bohater> gracze = new List<Bohater>();
 //Przedmioty dostępne do użycia
 Przedmiot MLeczenia = new Przedmiot("Mikstura Leczenia", "Leczenia zdrowia");
 Przedmiot MMany = new Przedmiot("Mikstura Many", "Odnowienie many");
-Przedmiot MWzmocnienia = new Przedmiot("Mikstura Wzmocnienia", "Zadanie losowych obrażeń");
+Przedmiot MWzmocnienia = new Przedmiot("Mikstura Obrarzeń", "Zadanie losowych obrażeń 1 - 100");
 
 List<Przedmiot> DostepnePrzedmioty = new List<Przedmiot>()
 {
@@ -96,17 +96,22 @@ foreach (var gracz in gracze)
 
 }
 
+//Wyświetlanie zawartości każdego z plecaków bohaterów
+Console.WriteLine("Każdemu graczowi zostały przyznane następujące przedmioty: ");
+foreach (var przedmiot in DostepnePrzedmioty)
+{
+    Console.WriteLine($"- {przedmiot.getNazwa()} ({przedmiot.getEfekt()})");
+}
+
 //Zmienna losująca kolej którego gracza nastepuje i lista do sprawdzania, czy konkretny gracz, już wykonał swój ruch
 Random rnd = new Random();
 List<int> kolejnosc = new List<int>(iloscGraczy);
 //Lista kontrolna upewniająca się, że bohater który umarł nie może zostać wybrany jako cel ataku
 List<int> usun = new List<int>(iloscGraczy);
 
-//Warunek: "Dopóki przynajmniej dwóch graczy jest żywych" gra toczy się dalej
-
 while (true)
 {
-    Console.WriteLine(gracze);
+    //Sprawdzanie czy jest tylko jeden żywy gracz
     int spr = 0;
     foreach (var gracz in gracze)
     {
@@ -119,7 +124,6 @@ while (true)
     {
         break;
     }
-    Console.WriteLine(gracze);
     //Sprawdzanie, czy dany gracz wykonał swój ruch
     while (kolejnosc.Count() != iloscGraczy)
     {
