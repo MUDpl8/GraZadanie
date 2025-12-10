@@ -3,6 +3,16 @@
 //Drużyna boahterów
 List<Bohater> gracze = new List<Bohater>();
 
+//Przedmioty dostępne do użycia
+Przedmiot MLeczenia = new Przedmiot("Mikstura Leczenia", "Leczenia zdrowia");
+Przedmiot MMany = new Przedmiot("Mikstura Many", "Odnowienie many");
+Przedmiot MWzmocnienia = new Przedmiot("Mikstura wzmocnienia", "Wzmocnienie następnego ataku");
+
+List<Przedmiot> DostepnePrzedmioty = new List<Przedmiot>()
+{
+    MLeczenia, MMany, MWzmocnienia
+};
+
 //Funkcja pozwalająca na wybranie celu ataku
 Bohater wybierzCel()
 {
@@ -59,6 +69,26 @@ for (int i = 0; i < iloscGraczy; i++)
     gracze.Add(Bohater);
 }
 
+//Dodanie przedmiotów do plecaków bohaterów
+foreach (var gracz in gracze)
+{
+    switch (gracz.getKlasa())
+    {
+        case "Łucznik":
+            foreach (var przedmiot in DostepnePrzedmioty)
+            {
+                gracz.plecakLucznik.Add(przedmiot);
+            }
+            break;
+        case "Wojownik":
+            
+            break;
+        case "Mag":
+            
+            break;
+    }
+
+}
 
 //Zmienna losująca kolej którego gracza nastepuje i lista do sprawdzania, czy konkretny gracz, już wykonał swój ruch
 Random rnd = new Random();
@@ -101,7 +131,15 @@ while (true)
                     Console.WriteLine("--------------------------------------------");
                     Console.WriteLine($"Turę rozpoczyna gracz: {gracze[kolej].getImie()}");
                     Console.WriteLine("--------------------------------------------");
-                    gracze[kolej].WybierzAtakLucznik(wybierzCel());
+                    switch (gracze[kolej].WybierzAkcje())
+                    {
+                        case 1:
+                            gracze[kolej].WybierzAtakLucznik(wybierzCel());
+                            break;
+                        case 2:
+                            gracze[kolej].WybierzPrzedmiot();
+                            break;
+                    }
                     break;
                 case "Wojownik":
                     if (gracze[kolej].getZycie() == 0)

@@ -8,12 +8,16 @@ using System.Xml.Linq;
 
 namespace GraZadanie
 {
-    internal class Bohater
+    internal class Bohater : Lucznik, Wojownik, Mag
     {
+        //Parametry gracza
         private string Imie;
         private string Klasa;
         private int Zycie = 100;
         private int Mana = 80;
+        //Plecaki bohaterów
+        public List<Przedmiot> plecakLucznik = new List<Przedmiot>();
+        //Konstruktor do tworzenia graczy
         public Bohater(string imie, string klasa)
         {
             this.Imie = imie;
@@ -140,7 +144,7 @@ namespace GraZadanie
         {
             if(wait != true) 
             { 
-            Console.WriteLine("Proszę wybrać atak do użycia: (1 - Strzał; 2 - Cięcie sztyletam; 3 - Precyzyjny strzał)");
+            Console.WriteLine("Proszę wybrać atak do użycia: \n1 - Strzał; \n2 - Cięcie sztyletam; \n3 - Precyzyjny strzał)");
             int wybor = Convert.ToInt16(Console.ReadLine());
                 switch (wybor)
                 {
@@ -167,9 +171,39 @@ namespace GraZadanie
 
         }
 
+        //Funkcja do wyboru przedmiotu do użycia
+        public void WybierzPrzedmiot()
+        {
+            switch (Klasa)
+            {
+                case "Łucznik":
+
+                    break;
+                case "Wojownik":
+
+                    break;
+                case "Mag":
+
+                    break;
+            }
+        }
+
+        //Funkcja do wyboru akcji Łucznika
+        public int WybierzAkcje()
+        {
+            Console.WriteLine("Proszę wybrać akcję do wykonania: \n1 - atak \n2 - użycie przedmiotu");
+            int wybor = Convert.ToInt16(Console.ReadLine());
+            if (wybor != 1 || wybor != 2)
+            {
+                Console.WriteLine("Wrowadzono niepoprawny wybór");
+                WybierzAkcje();
+            }
+            return wybor;
+        }
+
         //=================================================================================================================================================
 
-            //Interfejs Maga
+        //Interfejs Maga
         private bool podwojenie = false;
         
         public void KradziezMany(Bohater cel)
