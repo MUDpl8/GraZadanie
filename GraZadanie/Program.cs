@@ -6,7 +6,7 @@ List<Bohater> gracze = new List<Bohater>();
 //Przedmioty dostępne do użycia
 Przedmiot MLeczenia = new Przedmiot("Mikstura Leczenia", "Leczenia zdrowia");
 Przedmiot MMany = new Przedmiot("Mikstura Many", "Odnowienie many");
-Przedmiot MWzmocnienia = new Przedmiot("Mikstura wzmocnienia", "Wzmocnienie następnego ataku");
+Przedmiot MWzmocnienia = new Przedmiot("Mikstura Wzmocnienia", "Zadanie losowych obrażeń");
 
 List<Przedmiot> DostepnePrzedmioty = new List<Przedmiot>()
 {
@@ -81,10 +81,16 @@ foreach (var gracz in gracze)
             }
             break;
         case "Wojownik":
-            
+            foreach (var przedmiot in DostepnePrzedmioty)
+            {
+                gracz.plecakWojownik.Add(przedmiot);
+            }
             break;
         case "Mag":
-            
+            foreach (var przedmiot in DostepnePrzedmioty)
+            {
+                gracz.plecakMag.Add(przedmiot);
+            }
             break;
     }
 
@@ -137,7 +143,9 @@ while (true)
                             gracze[kolej].WybierzAtakLucznik(wybierzCel());
                             break;
                         case 2:
-                            gracze[kolej].WybierzPrzedmiot();
+                            int index = gracze[kolej].WybierzPrzedmiot(gracze[kolej]);
+                            gracze[kolej].plecakLucznik[index].UzyjPrzedmiot(gracze[kolej].plecakLucznik[index], wybierzCel());
+                            gracze[kolej].plecakLucznik.RemoveAt(index);
                             break;
                     }
                     break;
@@ -149,7 +157,17 @@ while (true)
                     Console.WriteLine("--------------------------------------------");
                     Console.WriteLine($"Turę rozpoczyna gracz: {gracze[kolej].getImie()}");
                     Console.WriteLine("--------------------------------------------");
-                    gracze[kolej].wybor_ataku_wojownika(wybierzCel());
+                    switch (gracze[kolej].WybierzAkcje())
+                    {
+                        case 1:
+                            gracze[kolej].wybor_ataku_wojownika(wybierzCel());
+                            break;
+                        case 2:
+                            int index = gracze[kolej].WybierzPrzedmiot(gracze[kolej]);
+                            gracze[kolej].plecakWojownik[index].UzyjPrzedmiot(gracze[kolej].plecakWojownik[index], wybierzCel());
+                            gracze[kolej].plecakWojownik.RemoveAt(index);
+                            break;
+                    }
                     break;
                 case "Mag":
                     if (gracze[kolej].getZycie() == 0)
@@ -159,7 +177,17 @@ while (true)
                     Console.WriteLine("--------------------------------------------");
                     Console.WriteLine($"Turę rozpoczyna gracz: {gracze[kolej].getImie()}");
                     Console.WriteLine("--------------------------------------------");
-                    gracze[kolej].WybierzAtakMag(wybierzCel());
+                    switch (gracze[kolej].WybierzAkcje())
+                    {
+                        case 1:
+                            gracze[kolej].WybierzAtakMag(wybierzCel());
+                            break;
+                        case 2:
+                            int index = gracze[kolej].WybierzPrzedmiot(gracze[kolej]);
+                            gracze[kolej].plecakMag[index].UzyjPrzedmiot(gracze[kolej].plecakMag[index], wybierzCel());
+                            gracze[kolej].plecakMag.RemoveAt(index);
+                            break;
+                    }
                     break;
             }
         }

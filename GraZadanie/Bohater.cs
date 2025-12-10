@@ -17,6 +17,8 @@ namespace GraZadanie
         private int Mana = 80;
         //Plecaki bohaterów
         public List<Przedmiot> plecakLucznik = new List<Przedmiot>();
+        public List<Przedmiot> plecakWojownik = new List<Przedmiot>();
+        public List<Przedmiot> plecakMag = new List<Przedmiot>();
         //Konstruktor do tworzenia graczy
         public Bohater(string imie, string klasa)
         {
@@ -84,6 +86,48 @@ namespace GraZadanie
         }
         //Zmienna Random do losowania wyników ataku
         private Random rnd = new Random();
+
+        //Funkcja do wyboru przedmiotu do użycia
+        public int WybierzPrzedmiot(Bohater gracz)
+        {
+            int i;
+            int wybor;
+            switch (gracz.getKlasa())
+            {
+                case "Łucznik":
+                    Console.WriteLine($"Gracz {gracz.getImie()} wybrał uzycie przedmiotu, proszę wybrać przedmiot do użycia:");
+                    i = 1;
+                    foreach (var przedmiot in gracz.plecakLucznik)
+                    {
+                        Console.WriteLine($"{i} - {przedmiot.getNazwa()} ({przedmiot.getEfekt()})");
+                        i++;
+                    }
+                    wybor = Convert.ToInt16(Console.ReadLine()) - 1;
+                    return wybor;
+                case "Wojownik":
+                    Console.WriteLine($"Gracz {gracz.getImie()} wybrał uzycie przedmiotu, proszę wybrać przedmiot do użycia:");
+                    i = 1;
+                    foreach (var przedmiot in gracz.plecakWojownik)
+                    {
+                        Console.WriteLine($"{i} - {przedmiot.getNazwa()} ({przedmiot.getEfekt()})");
+                        i++;
+                    }
+                    wybor = Convert.ToInt16(Console.ReadLine()) - 1;
+                    return wybor;
+                case "Mag":
+                    Console.WriteLine($"Gracz {gracz.getImie()} wybrał uzycie przedmiotu, proszę wybrać przedmiot do użycia:");
+                    i = 1;
+                    foreach (var przedmiot in gracz.plecakMag)
+                    {
+                        Console.WriteLine($"{i} - {przedmiot.getNazwa()} ({przedmiot.getEfekt()})");
+                        i++;
+                    }
+                    wybor = Convert.ToInt16(Console.ReadLine()) - 1;
+                    return wybor;
+                default:
+                    return 0;
+            }
+        }
 
         //=================================================================================================================================================
 
@@ -171,29 +215,12 @@ namespace GraZadanie
 
         }
 
-        //Funkcja do wyboru przedmiotu do użycia
-        public void WybierzPrzedmiot()
-        {
-            switch (Klasa)
-            {
-                case "Łucznik":
-
-                    break;
-                case "Wojownik":
-
-                    break;
-                case "Mag":
-
-                    break;
-            }
-        }
-
         //Funkcja do wyboru akcji Łucznika
         public int WybierzAkcje()
         {
             Console.WriteLine("Proszę wybrać akcję do wykonania: \n1 - atak \n2 - użycie przedmiotu");
             int wybor = Convert.ToInt16(Console.ReadLine());
-            if (wybor != 1 || wybor != 2)
+            if (wybor != 1 && wybor != 2)
             {
                 Console.WriteLine("Wrowadzono niepoprawny wybór");
                 WybierzAkcje();
