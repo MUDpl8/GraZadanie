@@ -1,1 +1,1 @@
-Projekt gry na zajęcia z programowania wykonachy przez: Peter_Crowfin (Piotr Kruk); Szachh (Stanisław Szaranowski); Widigiusz (Franciszek Łaba)
+Projekt gry na zajęcia z programowania wykonachy przez: Peter_Crowfin (Piotr Kruk) - klasa Bohater, interfejs Łucznik, główna pętla ; Szachh (Stanisław Szaranowski) - interfejs Wojownik; Widigiusz (Franciszek Łaba) - interfejs Mag
